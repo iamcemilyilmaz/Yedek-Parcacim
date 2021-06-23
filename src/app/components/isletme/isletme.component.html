@@ -1,0 +1,154 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark"
+  style="background-color: #342113"
+>
+  <a class="navbar-brand" href="#">
+    <img
+      src="../../../assets/logo.png"
+      style="height: 60%; width: 60%"
+      alt=""
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href=""
+          >Ana Sayfa <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="isletme">İşletme</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="kullanicilar">Kullanıcı</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid mt-4">
+  <div class="card col-md-5 float-left ml-5">
+    <div class="card-header text-center">
+      <h2>İşletme Giriş Ekranı</h2>
+    </div>
+    <div class="card-body">
+      <form #frm2="ngForm">
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="text" class="form-control" name="mail" #mail />
+        </div>
+        <div class="form-group">
+          <label>Parola</label>
+          <input type="password" class="form-control" name="parola" #parola />
+        </div>
+        <div class="form-group">
+          <input
+            type="submit"
+            value="Giriş Yap"
+            class="btn btn-outline-primary btn-block"
+            (click)="this.GirisYap(mail.value, parola.value)"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card col-md-5 float-left ml-5 mb-5">
+    <div class="card-header text-center">
+      <h2>İşletme Kayıt Ekranı</h2>
+    </div>
+    <div class="card-body">
+      <form #frm="ngForm" (ngSubmit)="KayitOl()">
+        <div class="form-group">
+          <label>İşletme Adı</label>
+          <input
+            type="text"
+            name="isletmeAdi"
+            class="form-control"
+            #isletmeAdi
+            [(ngModel)]="secUye.isletmeAdi"
+          />
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input
+            type="text"
+            name="telNo"
+            class="form-control"
+            #telNo
+            [(ngModel)]="secUye.telNo"
+          />
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mail"
+            class="form-control"
+            #mail
+            [(ngModel)]="secUye.mail"
+          />
+        </div>
+        <div class="form-group">
+          <label>Parola</label>
+          <input
+            type="password"
+            class="form-control"
+            name="parola"
+            class="form-control"
+            #parola
+            [(ngModel)]="secUye.parola"
+          />
+        </div>
+        <div class="form-group">
+          <label>Kategori</label>
+          <input
+            type="text"
+            class="form-control"
+            name="kategori"
+            class="form-control"
+            #kategori
+            [(ngModel)]="secUye.kategori"
+          />
+        </div>
+        <div class="form-group">
+          <label>Adres</label>
+          <textarea
+            name="adres"
+            id=""
+            class="form-control"
+            cols="30"
+            rows="3"
+            #adres
+            [(ngModel)]="secUye.adres"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-block">
+            Kayıt Ol
+          </button>
+        </div>
+      </form>
+      <div
+        class="alert"
+        *ngIf="this.durum.length > 5"
+        [ngClass]="this.sonuc ? 'alert-success' : 'alert-danger'"
+      >
+        {{ durum }}
+      </div>
+    </div>
+  </div>
+</div>

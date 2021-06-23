@@ -1,0 +1,75 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark"
+  style="background-color: #342113"
+>
+  <a class="navbar-brand" href="#">
+    <img
+      src="../../../assets/logo.png"
+      style="height: 60%; width: 60%"
+      alt=""
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="admin-isletme">İşletmeler</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="adminKullanici">Kullanıcılar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="adminUrun">Ürünler</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="adminEkle">Admin Ayarları</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="admin">Çıkış Yap</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-5">
+  <form ngForm="ngForm">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <td>Ad Soyad</td>
+          <td>Tel No</td>
+          <td>Mail</td>
+          <td>Düzenle</td>
+          <td>Sil</td>
+        </tr>
+      </thead>
+
+      <tbody class="table-secondary">
+        <tr *ngFor="let item of kullanicilar">
+          <td>{{ item.adsoyad }}</td>
+          <td>{{ item.telNo }}</td>
+          <td>{{ item.mail }}</td>
+          <td><button class="btn btn-warning btn-block">Düzenle</button></td>
+          <td>
+            <button
+              class="btn btn-danger btn-block"
+              (click)="this.isletmeSil(item.key)"
+            >
+              Sil
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
